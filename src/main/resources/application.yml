@@ -1,0 +1,44 @@
+camel:
+  springboot:
+    main-run-controller: true
+
+server:
+  port: 6062
+
+spring:
+  application:
+    name: pucsp-integracao-sistema-luiz-lucas
+  jmx:
+    enabled: true
+  datasource:
+    url: jdbc:h2:mem:mydb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console.enabled: true
+    console.path: /h2-console
+    console.settings.trace: false
+    spring.h2.console.settings.web-allow-others: false
+
+logging:
+  level:
+    io:
+      hawt: INFO
+      undertow: WARN
+    org:
+      springframework: WARN
+
+hawtio:
+  authenticationEnabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hawtio,jolokia
+  server:
+    port: 10001
+
