@@ -7,7 +7,7 @@ server:
 
 spring:
   application:
-    name: pucsp-integracao-sistema-luiz-lucas
+    name: pucsp-integracao-sistema
   jmx:
     enabled: true
   datasource:
