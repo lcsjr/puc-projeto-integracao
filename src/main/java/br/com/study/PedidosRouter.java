@@ -29,8 +29,7 @@ public class PedidosRouter extends RouteBuilder {
 		from("file:./pedidos?antInclude=**/*.xml&move=./outbox").routeId("getPedidosXml")
 			.choice()
 			.when(xpath("/pedido/departamento='TI'")).to(ExchangePattern.InOnly,"seda:processarPedido")
-			.otherwise().log(LoggingLevel.WARN, "Pedido ignorado ${header.CamelFileName}")
-			.to("file:./ignorados");
+			.otherwise().log(LoggingLevel.WARN, "Pedido ignorado ${header.CamelFileName}").to("file:./pedidos/ignorados");
 
 		from("seda:processarPedido")
 			.errorHandler(noErrorHandler())

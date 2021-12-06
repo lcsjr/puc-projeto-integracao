@@ -2,7 +2,7 @@
 <pedido>
   <numero>123456</numero>
   <cliente>000.000.000-55</cliente>
-  <departamento>TI</departamento>
+  <departamento>ADM</departamento>
   <produtos>
     <produto>
       <codigo>hw001</codigo>
