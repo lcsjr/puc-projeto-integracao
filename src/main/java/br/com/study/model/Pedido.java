@@ -16,10 +16,6 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 724894274450528069L;
 
 	protected Integer numPedido;
-	// protected String codigoCliente;
-	// protected String nomeCliente;
-	// protected String emailCliente;
-	// protected String enderecoCliente;
 	protected Integer valorTotal;
 	protected List<Produto> produtos = new ArrayList<>();
 }

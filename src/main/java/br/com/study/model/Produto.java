@@ -1,26 +1,14 @@
 package br.com.study.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Produto {
     private String codigo;
     private String descricao;
     private Integer valor;
-
-    public String getCodigo() {
-        return codigo;
-    }
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-    public String getDescricao() {
-        return descricao;
-    }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-    public Integer getValor() {
-        return valor;
-    }
-    public void setValor(Integer valor) {
-        this.valor = valor;
-    }
 }

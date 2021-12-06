@@ -15,13 +15,10 @@ public class ProdutoAgregationStrategy implements AggregationStrategy {
 
 	@Override
 	public Exchange aggregate(Exchange originalExchange, Exchange newExchange) {
-		Pedido pedido = originalExchange.getIn().getHeader(PEDIDO_NOVO, Pedido.class);
 		try {
+			Pedido pedido = originalExchange.getIn().getHeader(PEDIDO_NOVO, Pedido.class);
 			Produto produto = newExchange.getIn().getBody(Produto.class);
-
-			// pedido.getProdutos().add(new ProdutoPedido(produto.getCodigo(), produto.getDescricao(), produto.getValor(),
-			// 		originalExchange.getIn().getHeader("quantidade", Integer.class)));
-
+			pedido.getProdutos().add(produto);
 		} catch (Exception e) {
 			throw new RuntimeCamelException(e);
 		}
