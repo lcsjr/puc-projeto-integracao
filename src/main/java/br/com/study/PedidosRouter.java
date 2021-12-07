@@ -24,7 +24,8 @@ public class PedidosRouter extends RouteBuilder {
 		AggregationStrategy aggregationStrategy = new ProdutoAgregationStrategy();
 		ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-		from("direct:produtoByCodigo").routeId("produtoByCodigo").to("sql:select codigo, descricao, valor from produtos where codigo=:#codigo?outputType=SelectOne&outputClass=br.com.study.model.Produto");
+		from("direct:produtoByCodigo").routeId("produtoByCodigo")
+			.to("sql:select codigo, descricao, valor from produtos where codigo=:#codigo?outputType=SelectOne&outputClass=br.com.study.model.Produto");
 
 		from("file:./pedidos?antInclude=**/*.xml&move=./outbox").routeId("getPedidosXml")
 			.choice()
@@ -49,7 +50,7 @@ public class PedidosRouter extends RouteBuilder {
 			.log("${body}")
 			.process(exc->{
 				Pedido pedido = exc.getIn().getHeader(ProdutoAgregationStrategy.PEDIDO_NOVO, Pedido.class);
-				log.info("pedido:{}", pedido);
+				log.info("novoPedido:{}", pedido);
 			});
     }
 }
